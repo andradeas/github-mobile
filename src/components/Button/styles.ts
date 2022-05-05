@@ -9,10 +9,9 @@ export const Container  = styled.TouchableOpacity<Props> `
   width: ${props => props.buttonWidth ? "295px" : "154px"};
   height: ${props => props.buttonHeight ? "40px" : "32px"};
   background-color: black;
-  border-radius: 50px;
+  border-radius: 100px;
   justify-content: center;
   align-items: center;
-  margin-bottom: 181px;
 `
 
 export const Text = styled.Text`

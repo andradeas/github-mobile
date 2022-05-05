@@ -1,6 +1,4 @@
-import { StatusBar } from "react-native";
-
-import { Container } from "./styles";
+import { Container, Header } from "./styles";
 import {Logo} from '../../components/Logo';
 import { Button } from "../../components/Button";
 import { Text } from "../../components/Text";
@@ -10,8 +8,9 @@ import { SearchUser } from "../../components/SearchUser";
 export function Home(){
   return(
       <Container>
-        <StatusBar barStyle={'dark-content'} backgroundColor="transparent" />
-        <Logo large/>
+        <Header>
+          <Logo large/>
+        </Header>
         <Text />
         <SearchUser />
         <Button title="Cadastrar" large/>

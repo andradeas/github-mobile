@@ -1,5 +1,6 @@
 import {useFonts, Mulish_400Regular, Mulish_700Bold } from '@expo-google-fonts/mulish';
 import AppLoading from 'expo-app-loading';
+import { StatusBar } from 'react-native';
 
 import { Home } from './src/screens/Home';
 import { Users } from './src/screens/Users';
@@ -16,7 +17,11 @@ export default function App() {
   }
 
   return (
-    <Home />
+    <>
+      <StatusBar barStyle={'dark-content'} backgroundColor="transparent" />
+      <Users />
+    </>
+    
   );
 }
 
