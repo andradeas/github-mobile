@@ -4,6 +4,7 @@ import { StatusBar } from 'react-native';
 
 import { Home } from './src/screens/Home';
 import { Users } from './src/screens/Users';
+import { User } from './src/screens/User';
 
 
 export default function App() { 

@@ -1,5 +1,5 @@
 import pic from '../../assets/pic-profile.png';
-import { Avatar, Container, Profile, Name, UserInfo, UserName, OthersInfo, CompanyInfo, CompanyName, LocationInfo, LocationName, StarInfo, StarName } from "./styles";
+import { Avatar, Container, Profile, Name, UserInfo, UserName, OthersInfo, CompanyInfo, CompanyName, LocationInfo, LocationName, StarInfo, StarName, TrashContainer } from "./styles";
 import { MaterialIcons , FontAwesome5, Ionicons, Foundation } from '@expo/vector-icons';
 
 export function UserCard(){
@@ -14,7 +14,10 @@ export function UserCard(){
           </Name>
           <UserName>@johndoesantos</UserName>
         </UserInfo>
-        <FontAwesome5 name="trash" size={16} color="black" />
+        <TrashContainer>
+          <FontAwesome5 name="trash" size={12} color="black" />
+        </TrashContainer>
+        
       </Profile>
       <OthersInfo>
         <CompanyInfo>

@@ -20,15 +20,23 @@ export const Avatar = styled.Image`
   background-color: black;
 `
 export const UserInfo = styled.View`
-  
 `
 export const Name = styled.Text`
   font-size: 16px;
   font-family: Mulish_700Bold;
+  padding-bottom: 10px;
 `
 export const UserName = styled.Text`
   font-size: 14px;
   font-family: Mulish_400Regular;
+`
+export const TrashContainer = styled.TouchableOpacity`
+  width: 24px;
+  height: 24px;
+  border-radius: 12px;
+  background-color: #E8E8E8;
+  justify-content: center;
+  align-items: center;
 `
 export const OthersInfo = styled.View`
   padding: 0px 24px;
@@ -55,9 +63,7 @@ export const LocationName = styled.Text`
 `
 export const StarInfo = styled.View`
   flex-direction: row;
-  justify-content: space-around;
 `
-
 export const StarName = styled.Text`
   font-size: 12px;
   color: #7E7E7E;

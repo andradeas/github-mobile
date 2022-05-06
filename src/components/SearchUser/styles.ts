@@ -1,5 +1,9 @@
 import styled from "styled-components/native";
 
+export const InputContainer =  styled.View`
+  flex-direction: row ;
+`
+
 export const Input = styled.TextInput`
   width: 295px;
   height: 40px;
