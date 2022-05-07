@@ -1,10 +1,13 @@
-import { Container, FilterButton, Input } from "./styles";
-import { Ionicons } from '@expo/vector-icons'; 
+import { Container, FilterButton, Input, InputContainer } from "./styles";
+import { Ionicons, EvilIcons } from '@expo/vector-icons'; 
 
 export function SearchRepository(){
   return(
     <Container>
-      <Input placeholder="Buscar um repositório..."/>
+      <InputContainer>
+        <EvilIcons name="search" size={24} color="#7E7E7E" />
+        <Input placeholder="Buscar um repositório..."/>
+      </InputContainer>
       <FilterButton>
         <Ionicons name="filter-outline" size={24} color="#7E7E7E" />
       </FilterButton>

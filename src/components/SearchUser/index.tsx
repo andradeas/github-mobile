@@ -1,4 +1,4 @@
-import {Input, InputContainer} from './styles';
+import { Input, InputContainer} from './styles';
 import { MaterialIcons } from '@expo/vector-icons';
 
 export function SearchUser(){

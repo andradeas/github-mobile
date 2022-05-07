@@ -11,9 +11,14 @@ export const TitleContainer = styled.View`
   flex-direction: row;
   justify-content: space-between;
 `
-export const Title = styled.Text`
+export const NameContainer = styled.TouchableOpacity`
+  flex-direction: row;
+  align-items: center;
+`
+export const Name = styled.Text`
   font-size: 16px;
   font-family: Mulish_700Bold;
+  padding-right: 8px;
 `
 export const StarContainer = styled.TouchableOpacity`
   width: 24px;
@@ -30,44 +35,34 @@ export const Description = styled.Text`
 export const TagsContainer = styled.View`
   flex-direction: row;
 `
-export const DetailsContainer = styled.View`
+export const OtherInfo = styled.View`
   flex-direction: row;
   justify-content: space-between;
 `
-export const TechnologyInfo = styled.View`
+export const DetailsContainer = styled.View`
   flex-direction: row;
-  justify-content: space-between;
 `
 export const TechnologyName = styled.Text`
   font-size: 12px;
-  padding-left: 4px;
+  margin-left: 4px;
   font-family: Mulish_400Regular;
   color: #7E7E7E;
-`
-export const StarInfo = styled.View`
-  flex-direction: row;
 `
 export const StarName = styled.Text`
   font-size: 12px;
   color: #7E7E7E;
-  padding-left: 4px;
+  margin-left: 4px;
   font-family: Mulish_400Regular;
-`
-export const PeopleInfo = styled.View`
-flex-direction: row;
 `
 export const PeopleName = styled.Text`
   font-size: 12px;
   color: #7E7E7E;
-  padding-left: 4px;
+  margin-left: 4px;
   font-family: Mulish_400Regular;
-`
-export const TimeInfo = styled.View`
-flex-direction: row;
 `
 export const TimeName = styled.Text`
   font-size: 12px;
   color: #7E7E7E;
-  padding-left: 4px;
+  margin-left: 4px;
   font-family: Mulish_400Regular;
 `

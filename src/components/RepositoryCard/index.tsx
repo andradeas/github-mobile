@@ -1,4 +1,4 @@
-import { Container, TitleContainer, Title, Description, TagsContainer, DetailsContainer, TechnologyInfo, TechnologyName, StarInfo, StarName, PeopleInfo, PeopleName, TimeInfo, TimeName, StarContainer } from "./styles";
+import { Container, TitleContainer, NameContainer, Name, Description, TagsContainer, OtherInfo, DetailsContainer, TechnologyName, StarName, PeopleName, TimeName, StarContainer } from "./styles";
 import { FontAwesome, MaterialIcons  } from '@expo/vector-icons';
 import { Tag } from "../Tag";
 
@@ -6,9 +6,12 @@ export function RepositoryCard(){
   return(
     <Container>
       <TitleContainer>
-        <Title>
-          project-name-java
-        </Title>
+        <NameContainer>
+          <Name>
+            project-name-java
+          </Name>
+          <MaterialIcons name="arrow-forward-ios" size={16} color="black" />
+        </NameContainer>
         <StarContainer>
           <FontAwesome name="star" size={16} color="#FFC700" />
         </StarContainer>
@@ -19,26 +22,26 @@ export function RepositoryCard(){
       <TagsContainer>
         <Tag />
       </TagsContainer>
-      <DetailsContainer>
-        <TechnologyInfo>
+      <OtherInfo>
+        <DetailsContainer>
           <MaterialIcons name="language" size={16} color="#E5E5E5" />
           <TechnologyName>
             React Native
           </TechnologyName>
-        </TechnologyInfo>
-        <StarInfo>
+        </DetailsContainer>
+        <DetailsContainer>
           <FontAwesome name="star" size={16} color="#E5E5E5" />
           <StarName>2</StarName>
-        </StarInfo>
-        <PeopleInfo>
+        </DetailsContainer>
+        <DetailsContainer>
           <MaterialIcons name="supervisor-account" size={16} color="#E5E5E5" />
           <PeopleName>5</PeopleName>
-        </PeopleInfo>
-        <TimeInfo>
+        </DetailsContainer>
+        <DetailsContainer>
           <MaterialIcons name="access-time" size={16} color="#E5E5E5" />
           <TimeName>2 days ago</TimeName>
-        </TimeInfo>
-      </DetailsContainer>
+        </DetailsContainer>
+      </OtherInfo>
 
     </Container>
   )

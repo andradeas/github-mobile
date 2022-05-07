@@ -1,17 +1,17 @@
-import pic from '../../assets/pic-profile.png';
-import { Avatar, Container, Profile, Name, UserInfo, UserName, OthersInfo, CompanyInfo, CompanyName, LocationInfo, LocationName, StarInfo, StarName, TrashContainer } from "./styles";
+import { Avatar, Container, Profile, Name, UserInfo, NameContainer, UserName, OthersInfo, DetailsContainer, CompanyName, LocationName, StarName, TrashContainer } from "./styles";
 import { MaterialIcons , FontAwesome5, Ionicons, Foundation } from '@expo/vector-icons';
+import userImage from '../../assets/pic-profile.png';
 
 export function UserCard(){
   return(
     <Container>
       <Profile>
-        <Avatar source={pic} />
+        <Avatar source={userImage} />
         <UserInfo>
-          <Name>
-            John Doe Santos 
-            {/* <MaterialIcons name="arrow-forward-ios" size={13} color="black" /> */}
-          </Name>
+          <NameContainer>
+            <Name>John Doe Santos</Name>
+            <MaterialIcons name="arrow-forward-ios" size={16} color="black" />
+          </NameContainer>
           <UserName>@johndoesantos</UserName>
         </UserInfo>
         <TrashContainer>
@@ -20,20 +20,20 @@ export function UserCard(){
         
       </Profile>
       <OthersInfo>
-        <CompanyInfo>
+        <DetailsContainer>
           <MaterialIcons name="business" size={16} color="#E5E5E5" />
           <CompanyName>GO.K Digital</CompanyName>
-        </CompanyInfo>
+        </DetailsContainer>
 
-        <LocationInfo>
+        <DetailsContainer>
           <Ionicons name="location-sharp" size={16} color="#E5E5E5" />
           <LocationName>São Paulo</LocationName>
-        </LocationInfo>
+        </DetailsContainer>
 
-        <StarInfo>
+        <DetailsContainer>
           <Foundation name="star" size={16} color="#E5E5E5" />
           <StarName>2</StarName>
-        </StarInfo>
+        </DetailsContainer>
 
       </OthersInfo>
     </Container>

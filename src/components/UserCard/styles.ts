@@ -21,10 +21,15 @@ export const Avatar = styled.Image`
 `
 export const UserInfo = styled.View`
 `
+export const NameContainer = styled.TouchableOpacity`
+  flex-direction: row;
+  align-items: center;
+  padding-bottom: 10px;
+`
 export const Name = styled.Text`
   font-size: 16px;
   font-family: Mulish_700Bold;
-  padding-bottom: 10px;
+  padding-right: 8px;
 `
 export const UserName = styled.Text`
   font-size: 14px;
@@ -43,30 +48,24 @@ export const OthersInfo = styled.View`
   flex-direction: row;
   justify-content: space-between;
 `
-export const CompanyInfo = styled.View`
+export const DetailsContainer = styled.View`
   flex-direction: row;
 `
 export const CompanyName = styled.Text`
   font-size: 12px;
   color: #7E7E7E;
-  padding-left: 4px;
+  margin-left: 4px;
   font-family: Mulish_400Regular;
-`
-export const LocationInfo = styled.View`
-  flex-direction: row;
 `
 export const LocationName = styled.Text`
   font-size: 12px;
   color: #7E7E7E;
-  padding-left: 4px;
+  margin-left: 4px;
   font-family: Mulish_400Regular;
-`
-export const StarInfo = styled.View`
-  flex-direction: row;
 `
 export const StarName = styled.Text`
   font-size: 12px;
   color: #7E7E7E;
-  padding-left: 4px;
+  margin-left: 4px;
   font-family: Mulish_400Regular;
 `
