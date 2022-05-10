@@ -17,9 +17,6 @@ export const PoliticalLink = styled.Text`
   font-size: 16px;
   color: #7E7E7E;
   text-decoration: underline;
-  /* hover {
-    cursor: pointer;
-  } */
 `
 export const PrivacyLink = styled.Text`
   font-size: 16px;

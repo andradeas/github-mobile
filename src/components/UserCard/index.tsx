@@ -2,13 +2,17 @@ import { Avatar, Container, Profile, Name, UserInfo, NameContainer, UserName, Ot
 import { MaterialIcons , FontAwesome5, Ionicons, Foundation } from '@expo/vector-icons';
 import userImage from '../../assets/pic-profile.png';
 
-export function UserCard(){
+type Props = {
+  onPress: () => void;
+}
+
+export function UserCard({onPress}: Props){
   return(
     <Container>
       <Profile>
         <Avatar source={userImage} />
         <UserInfo>
-          <NameContainer>
+          <NameContainer onPress={onPress}>
             <Name>John Doe Santos</Name>
             <MaterialIcons name="arrow-forward-ios" size={16} color="black" />
           </NameContainer>
