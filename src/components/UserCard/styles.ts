@@ -1,5 +1,4 @@
 import styled from "styled-components/native";
-import { RectButton } from "react-native-gesture-handler";
 
 export const Container = styled.View`
   height: 160px;
@@ -13,12 +12,6 @@ export const Profile = styled.View`
   align-items: center;
   padding: 0px 24px;
   margin-bottom: 16px;
-`
-export const Avatar = styled.Image`
-  width: 64px;
-  height: 64px;
-  border-radius: 32px;
-  background-color: black;
 `
 export const UserInfo = styled.View`
 `

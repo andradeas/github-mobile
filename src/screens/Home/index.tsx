@@ -1,26 +1,23 @@
-import { Container, Header } from "./styles";
+import { Container, LogoContainer } from "./styles";
 import {Logo} from '../../components/Logo';
 import { Button } from "../../components/Button";
 import { Text } from "../../components/Text";
 import { Footer } from "../../components/Footer";
 import { SearchUser } from "../../components/SearchUser";
 import { useNavigation } from "@react-navigation/native";
-import { StackProps } from "../../routes/app.routes";
-import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 
 export function Home(){
-  
-  const navigation = useNavigation<NativeStackNavigationProp<StackProps>>();
+  const navigation = useNavigation();
 
-  function handleRegisterUser(){
-    navigation.navigate('Users')
+  function handleRegisterUser(){  
+    navigation.navigate('users')
   }
 
   return(
       <Container>
-        <Header>
+        <LogoContainer>
           <Logo large/>
-        </Header>
+        </LogoContainer>
         <Text />
         <SearchUser />
         <Button title="Cadastrar" large onPress={handleRegisterUser}/>

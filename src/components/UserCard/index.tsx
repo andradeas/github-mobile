@@ -1,22 +1,33 @@
-import { Avatar, Container, Profile, Name, UserInfo, NameContainer, UserName, OthersInfo, DetailsContainer, CompanyName, LocationName, StarName, TrashContainer } from "./styles";
+import { Container, Profile, Name, UserInfo, NameContainer, UserName, OthersInfo, DetailsContainer, CompanyName, LocationName, StarName, TrashContainer } from "./styles";
 import { MaterialIcons , FontAwesome5, Ionicons, Foundation } from '@expo/vector-icons';
-import userImage from '../../assets/pic-profile.png';
+import { Avatar } from "../Avatar";
+
+export type UserProps = {
+  id: string;
+  image: string;
+  name: string;
+  userName: string;
+  company: string;
+  location:string;
+  stars: string;
+}
 
 type Props = {
   onPress: () => void;
+  data: UserProps;
 }
 
-export function UserCard({onPress}: Props){
+export function UserCard({onPress, data}: Props){
   return(
     <Container>
       <Profile>
-        <Avatar source={userImage} />
+        <Avatar urlImage={data.image} large/>
         <UserInfo>
           <NameContainer onPress={onPress}>
-            <Name>John Doe Santos</Name>
+            <Name>{data.name}</Name>
             <MaterialIcons name="arrow-forward-ios" size={16} color="black" />
           </NameContainer>
-          <UserName>@johndoesantos</UserName>
+          <UserName>{data.userName}</UserName>
         </UserInfo>
         <TrashContainer>
           <FontAwesome5 name="trash" size={12} color="black" />
@@ -26,17 +37,17 @@ export function UserCard({onPress}: Props){
       <OthersInfo>
         <DetailsContainer>
           <MaterialIcons name="business" size={16} color="#E5E5E5" />
-          <CompanyName>GO.K Digital</CompanyName>
+          <CompanyName>{data.company}</CompanyName>
         </DetailsContainer>
 
         <DetailsContainer>
           <Ionicons name="location-sharp" size={16} color="#E5E5E5" />
-          <LocationName>São Paulo</LocationName>
+          <LocationName>{data.location}</LocationName>
         </DetailsContainer>
 
         <DetailsContainer>
           <Foundation name="star" size={16} color="#E5E5E5" />
-          <StarName>2</StarName>
+          <StarName>{data.stars}</StarName>
         </DetailsContainer>
 
       </OthersInfo>

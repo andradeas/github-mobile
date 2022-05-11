@@ -6,7 +6,7 @@ export const Container = styled.View`
   justify-content: center;
 `
 
-export const Header = styled.View`
+export const LogoContainer = styled.View`
   margin-top: 60px;
   margin-bottom: 80px;
 `
