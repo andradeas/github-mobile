@@ -5,7 +5,7 @@ type Props = {
   buttonHeight: boolean
 }
 
-export const Container  = styled.TouchableOpacity<Props> `
+export const Container = styled.TouchableOpacity<Props>`
   width: ${props => props.buttonWidth ? "295px" : "154px"};
   height: ${props => props.buttonHeight ? "40px" : "32px"};
   background-color: black;
