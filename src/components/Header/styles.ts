@@ -5,6 +5,7 @@ export const Container = styled.View`
   flex-direction: row;
   justify-content: space-between;
   padding: 20px;
+  background-color: ${({theme}) => theme.COLORS.background};
 `
 export const GoBackButton = styled.TouchableOpacity`
 `

@@ -2,13 +2,33 @@ import { Container, TitleContainer, NameContainer, Name, Description, TagsContai
 import { FontAwesome, MaterialIcons  } from '@expo/vector-icons';
 import { Tag } from "../Tag";
 
-export function RepositoryCard(){
+export type TagProps = {
+  id: string;
+  name: string;
+}
+
+export type RepositoryProps = {
+  id: string;
+  name: string;
+  description: string;
+  tags: TagProps;
+  technology: string;
+  stars: string;
+  people: string;
+  time: string;
+}
+
+export type Props = {
+  data: RepositoryProps;
+}
+
+export function RepositoryCard({data}: Props){
   return(
     <Container>
       <TitleContainer>
         <NameContainer>
           <Name>
-            project-name-java
+            {data.name}
           </Name>
           <MaterialIcons name="arrow-forward-ios" size={16} color="black" />
         </NameContainer>
@@ -17,7 +37,7 @@ export function RepositoryCard(){
         </StarContainer>
       </TitleContainer>
       <Description>
-         Project application with component app with React Native.
+         {data.description}
       </Description>
       <TagsContainer>
         <Tag />
@@ -26,20 +46,20 @@ export function RepositoryCard(){
         <DetailsContainer>
           <MaterialIcons name="language" size={16} color="#E5E5E5" />
           <TechnologyName>
-            React Native
+           {data.technology}
           </TechnologyName>
         </DetailsContainer>
         <DetailsContainer>
           <FontAwesome name="star" size={16} color="#E5E5E5" />
-          <StarName>2</StarName>
+          <StarName>{data.stars}</StarName>
         </DetailsContainer>
         <DetailsContainer>
           <MaterialIcons name="supervisor-account" size={16} color="#E5E5E5" />
-          <PeopleName>5</PeopleName>
+          <PeopleName>{data.people}</PeopleName>
         </DetailsContainer>
         <DetailsContainer>
           <MaterialIcons name="access-time" size={16} color="#E5E5E5" />
-          <TimeName>2 days ago</TimeName>
+          <TimeName>{data.time}</TimeName>
         </DetailsContainer>
       </OtherInfo>
 

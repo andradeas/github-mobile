@@ -1,19 +1,20 @@
 import {useFonts, Mulish_400Regular, Mulish_700Bold } from '@expo-google-fonts/mulish';
 import AppLoading from 'expo-app-loading';
-import { StatusBar } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
+import { StatusBar, View } from 'react-native';
+import { DefaultTheme, NavigationContainer } from '@react-navigation/native';
 import { AppRoutes } from './src/routes/app.routes';
+
+import { AuthContext } from './src/hooks/auth';
+import { ThemeProvider } from 'styled-components/native';
+import { theme } from './src/global/styles/theme';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function App(){
   const MyTheme = {
-    dark: false,
+    ...DefaultTheme,
     colors: {
-      primary: 'rgb(255, 45, 85)',
-      background: 'rgb(255, 255, 255)',
-      card: 'rgb(255, 255, 255)',
-      text: 'rgb(28, 28, 30)',
-      border: 'rgb(199, 199, 204)',
-      notification: 'rgb(255, 69, 58)',
+      ...DefaultTheme.colors,
+      background: theme.COLORS.background,
     },
   };
 
@@ -27,12 +28,19 @@ export default function App(){
   }
 
   return (
-    <>
-      <StatusBar barStyle={'dark-content'} backgroundColor="transparent" />
-      <NavigationContainer theme={MyTheme}>
-        <AppRoutes />
-      </NavigationContainer>
-    </>
+    <ThemeProvider theme={theme}>
+      <SafeAreaView style={{flex:1}}>
+        <StatusBar barStyle={'dark-content'} backgroundColor="transparent" />
+        <AuthContext.Provider value={{
+          name: "André",
+          username: "@andradeas"
+        }} >
+          <NavigationContainer theme={MyTheme}>
+            <AppRoutes />  
+          </NavigationContainer>
+        </AuthContext.Provider>
+      </SafeAreaView>
+    </ThemeProvider>
   );
 }
 

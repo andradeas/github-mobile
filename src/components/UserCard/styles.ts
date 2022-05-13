@@ -25,7 +25,7 @@ export const Name = styled.Text`
   font-family: Mulish_700Bold;
   padding-right: 8px;
 `
-export const UserName = styled.Text`
+export const Username = styled.Text`
   font-size: 14px;
   font-family: Mulish_400Regular;
 `

@@ -12,7 +12,7 @@ export function Users(){
       id: '1',
       name: 'John Doe Santos',
       image: 'https://github.com/andradeas.png',
-      userName: '@johndoesantos',
+      username: '@johndoesantos',
       company: 'GO.K Digital',
       location: 'São Paulo, Brasil',
       stars: '2',
@@ -41,6 +41,8 @@ export function Users(){
             <UserCard data={item} onPress={handleUser}/>
           )}
           ItemSeparatorComponent={Separator}
+          contentContainerStyle={{paddingBottom: 30}}
+          showsVerticalScrollIndicator={false}
         />
       </Container>
     </>

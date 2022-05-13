@@ -3,7 +3,7 @@ import styled from "styled-components/native";
 export const Container = styled.View`
   height: 183px;
   border-radius: 8px;
-  background-color: white;
+  background-color: ${({ theme }) => theme.COLORS.background};
   padding: 26px 20px;
   justify-content: space-around;
 `
@@ -17,7 +17,7 @@ export const NameContainer = styled.TouchableOpacity`
 `
 export const Name = styled.Text`
   font-size: 16px;
-  font-family: Mulish_700Bold;
+  font-family: ${({ theme }) => theme.FONTS.title};
   padding-right: 8px;
 `
 export const StarContainer = styled.TouchableOpacity`

@@ -1,4 +1,4 @@
-import { Container, Profile, Name, UserInfo, NameContainer, UserName, OthersInfo, DetailsContainer, CompanyName, LocationName, StarName, TrashContainer } from "./styles";
+import { Container, Profile, Name, UserInfo, NameContainer, Username, OthersInfo, DetailsContainer, CompanyName, LocationName, StarName, TrashContainer } from "./styles";
 import { MaterialIcons , FontAwesome5, Ionicons, Foundation } from '@expo/vector-icons';
 import { Avatar } from "../Avatar";
 
@@ -6,7 +6,7 @@ export type UserProps = {
   id: string;
   image: string;
   name: string;
-  userName: string;
+  username: string;
   company: string;
   location:string;
   stars: string;
@@ -27,7 +27,7 @@ export function UserCard({onPress, data}: Props){
             <Name>{data.name}</Name>
             <MaterialIcons name="arrow-forward-ios" size={16} color="black" />
           </NameContainer>
-          <UserName>{data.userName}</UserName>
+          <Username>{data.username}</Username>
         </UserInfo>
         <TrashContainer>
           <FontAwesome5 name="trash" size={12} color="black" />

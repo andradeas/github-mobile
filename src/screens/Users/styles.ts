@@ -3,6 +3,7 @@ import { FlatList, FlatListProps } from "react-native";
 import { UserProps } from "../../components/UserCard";
 
 export const HeaderContainer = styled.View`
+  background-color: ${({theme}) => theme.COLORS.background};
   width: 100%;
   flex-direction: row;
   align-items: center;
