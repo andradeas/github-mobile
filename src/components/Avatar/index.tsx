@@ -1,4 +1,3 @@
-import { View } from "react-native";
 import { ImageProfile } from "./styles";
 
 type Props = {
@@ -8,8 +7,6 @@ type Props = {
 
 export function Avatar({urlImage, large}: Props) {
   return (
-    <View>
-      <ImageProfile source={{uri: urlImage}} imageWidth={large} imageHeight={large} imageBorderRarius={large}/>
-    </View>
+    <ImageProfile source={{uri: urlImage}} imageWidth={large} imageHeight={large} imageBorderRarius={large}/>
   );
 }

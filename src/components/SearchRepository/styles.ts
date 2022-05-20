@@ -18,7 +18,7 @@ export const Input = styled.TextInput`
   flex: 1;
   height: 40px;
   font-size: 16px;
-  color: #7E7E7E;
+  color: ${({ theme }) => theme.COLORS.text};
   padding-left: 10px;
 `
 export const FilterButton = styled.TouchableOpacity`
@@ -26,5 +26,5 @@ export const FilterButton = styled.TouchableOpacity`
   align-items: center;
   width: 48px;
   height: 40px;
-  background-color: white;
+  background-color: ${({ theme }) => theme.COLORS.background};
 `

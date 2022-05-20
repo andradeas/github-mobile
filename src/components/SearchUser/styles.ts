@@ -1,6 +1,6 @@
 import styled from "styled-components/native";
 
-export const InputContainer =  styled.View`
+export const Container =  styled.View`
   flex-direction: row;
   align-items: center;
   width: 295px;
@@ -13,6 +13,6 @@ export const Input = styled.TextInput`
   flex: 1;
   height: 40px;
   font-size: 16px;
-  color: #7E7E7E;
+  color: ${({ theme }) => theme.COLORS.text};
   padding-left: 10px;
 `

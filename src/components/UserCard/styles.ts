@@ -1,9 +1,10 @@
+import { BorderlessButton, RectButton } from "react-native-gesture-handler";
 import styled from "styled-components/native";
 
-export const Container = styled.View`
+export const Container = styled(RectButton)`
   height: 160px;
   border-radius: 8px;
-  background-color: white;
+  background-color: ${({ theme }) => theme.COLORS.background};
   justify-content: center;
 `
 export const Profile = styled.View`
@@ -15,21 +16,23 @@ export const Profile = styled.View`
 `
 export const UserInfo = styled.View`
 `
-export const NameContainer = styled.TouchableOpacity`
+export const NameContainer = styled.View`
   flex-direction: row;
   align-items: center;
   padding-bottom: 10px;
 `
 export const Name = styled.Text`
   font-size: 16px;
-  font-family: Mulish_700Bold;
+  font-family: ${({ theme }) => theme.FONTS.title};
+  color: ${({ theme }) => theme.COLORS.title};
   padding-right: 8px;
 `
 export const Username = styled.Text`
   font-size: 14px;
-  font-family: Mulish_400Regular;
+  font-family: ${({ theme }) => theme.FONTS.text};
+  color: ${({ theme }) => theme.COLORS.title};
 `
-export const TrashContainer = styled.TouchableOpacity`
+export const TrashContainer = styled(BorderlessButton)`
   width: 24px;
   height: 24px;
   border-radius: 12px;
@@ -49,17 +52,20 @@ export const CompanyName = styled.Text`
   font-size: 12px;
   color: #7E7E7E;
   margin-left: 4px;
-  font-family: Mulish_400Regular;
+  font-family: ${({ theme }) => theme.FONTS.text};
+  color: ${({ theme }) => theme.COLORS.text};
 `
 export const LocationName = styled.Text`
   font-size: 12px;
   color: #7E7E7E;
   margin-left: 4px;
-  font-family: Mulish_400Regular;
+  font-family: ${({ theme }) => theme.FONTS.text};
+  color: ${({ theme }) => theme.COLORS.text};
 `
 export const StarName = styled.Text`
   font-size: 12px;
   color: #7E7E7E;
   margin-left: 4px;
-  font-family: Mulish_400Regular;
+  font-family: ${({ theme }) => theme.FONTS.text};
+  color: ${({ theme }) => theme.COLORS.text};
 `

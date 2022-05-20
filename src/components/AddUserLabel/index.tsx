@@ -1,6 +1,6 @@
 import {Container, Title, SubTitle} from './styles';
 
-export function Text(){
+export function AddUserLabel(){
   return(
     <Container>
       <Title>Buscar usuário</Title>

@@ -11,18 +11,18 @@ export const TextPrimary = styled.Text`
 `
 export const TextSecundary = styled.Text`
   font-size: 16px;
-  color: ${({ theme }) => theme.COLORS.text};;
+  color: ${({ theme }) => theme.COLORS.text};
   font-family: ${({ theme }) => theme.FONTS.text};
 `
-export const PoliticalLink = styled.Text`
+export const PolicyLink = styled.Text`
   font-size: 16px;
-  color: ${({ theme }) => theme.COLORS.text};;
+  color: ${({ theme }) => theme.COLORS.text};
   text-decoration: underline;
   font-family: ${({ theme }) => theme.FONTS.text};
 `
 export const PrivacyLink = styled.Text`
   font-size: 16px;
-  color: ${({ theme }) => theme.COLORS.text};;
+  color: ${({ theme }) => theme.COLORS.text};
   text-decoration: underline;
   font-family: ${({ theme }) => theme.FONTS.text};
 `

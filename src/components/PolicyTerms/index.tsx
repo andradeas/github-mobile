@@ -1,19 +1,19 @@
-import { TextPrimary, TextSecundary, TextContainer, PrivacyLink, PoliticalLink } from "./styles";
+import { TextPrimary, TextSecundary, TextContainer, PrivacyLink, PolicyLink } from "./styles";
 
 import { Linking } from 'react-native';
 
-export function Footer(){
+export function PolicyTerms(){
   const baseURL = 'https://reactnative.dev';
   
   return(
     <TextContainer>
       <TextPrimary>Termos de </TextPrimary>
-      <PoliticalLink
+      <PolicyLink
         onPress={() => { 
           Linking.openURL(baseURL); 
         }}>
         política
-      </PoliticalLink>
+      </PolicyLink>
       <TextSecundary> e </TextSecundary>
       <PrivacyLink
         onPress={() => { 

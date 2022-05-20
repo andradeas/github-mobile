@@ -1,15 +1,16 @@
 import { Container, LogoContainer } from "./styles";
 import {Logo} from '../../components/Logo';
 import { Button } from "../../components/Button";
-import { Text } from "../../components/Text";
-import { Footer } from "../../components/Footer";
+import { AddUserLabel } from "../../components/AddUserLabel";
+import { PolicyTerms } from "../../components/PolicyTerms";
 import { SearchUser } from "../../components/SearchUser";
 import { useNavigation } from "@react-navigation/native";
+
 
 export function Home(){
   const navigation = useNavigation();
 
-  function handleRegisterUser(){  
+  function handleRegisterUser(){
     navigation.navigate('users')
   }
 
@@ -18,10 +19,10 @@ export function Home(){
         <LogoContainer>
           <Logo large/>
         </LogoContainer>
-        <Text />
+        <AddUserLabel />
         <SearchUser />
         <Button title="Cadastrar" large onPress={handleRegisterUser}/>
-        <Footer />
+        <PolicyTerms />
       </Container>
   )
 }

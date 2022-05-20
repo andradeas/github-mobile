@@ -10,5 +10,5 @@ export const Container = styled.View`
 `
 export const TagName = styled.Text`
   font-size: 12px;
-  font-family: Mulish_400Regular;
+  font-family: ${({ theme }) => theme.FONTS.text};
 ` 

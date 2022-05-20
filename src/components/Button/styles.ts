@@ -1,11 +1,14 @@
 import styled from "styled-components/native";
+import { RectButton } from 'react-native-gesture-handler';
+import { ReactChild } from "react";
 
 type Props = {
   buttonWidth: boolean,
-  buttonHeight: boolean
+  buttonHeight: boolean,
+  children: React.ReactChild,
 }
 
-export const Container = styled.TouchableOpacity<Props>`
+export const Container = styled(RectButton)<Props>`
   width: ${props => props.buttonWidth ? "295px" : "154px"};
   height: ${props => props.buttonHeight ? "40px" : "32px"};
   background-color: black;

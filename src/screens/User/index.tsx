@@ -1,9 +1,13 @@
+import { useState } from "react";
 import { RepositoryContainer, RepositoryList, Separator } from "./styles"
-import { Header } from "../../components/Header";
+import { UserHeader } from "../../components/UserHeader";
 import { SearchRepository } from "../../components/SearchRepository";
 import { RepositoryCard } from "../../components/RepositoryCard";
+import { Load } from "../../components/Load";
 
 export function User(){
+  const [loading, setLoading] = useState(true);
+
   const repositories = [
     {
       id: '1',
@@ -87,17 +91,20 @@ export function User(){
 
   return(
     <>
-      <Header/>
+      <UserHeader/>
       <RepositoryContainer>
         <SearchRepository />
-        <RepositoryList 
+        { loading ? <Load />
+          :
+          <RepositoryList 
           data={repositories}
           keyExtractor={ item => item.id}
           renderItem={({item}) => (<RepositoryCard data={item}/>)}
           ItemSeparatorComponent={Separator}
           contentContainerStyle={{paddingBottom: 30}}
           showsVerticalScrollIndicator={false}
-        />
+          />
+        }  
       </RepositoryContainer>
     </>
   )
