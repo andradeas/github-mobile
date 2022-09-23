@@ -1,19 +1,22 @@
-import { GestureHandlerRootView} from "react-native-gesture-handler";
 import { Container, Text } from "./styles";
+import { RectButtonProps } from 'react-native-gesture-handler';
 
-type Props = {
+interface Props extends RectButtonProps {
   title: string,
   large: boolean,
   onPress: () => void;
 }
+// type Props = TouchableOpacityProps & {
+//   title: string,
+//   large: boolean,
+//   onPress: () => void;
+// }
 
-export function Button({title, large, onPress}: Props){
+export function Button({title, large, onPress, ...rest}: Props){
 
   return(
-    <GestureHandlerRootView>
-      <Container buttonWidth={large} buttonHeight={large} onPress={onPress}>
+      <Container buttonWidth={large} buttonHeight={large} onPress={onPress} {...rest}>
         <Text>{title}</Text>
       </Container>
-    </GestureHandlerRootView>
   )
 }

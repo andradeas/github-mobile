@@ -1,22 +1,27 @@
-import { Container, LogoContainer } from "./styles";
+import { Container, LogoContainer, Header, GoBackButton } from "./styles";
+import { AntDesign } from '@expo/vector-icons';
 import {Logo} from '../../components/Logo';
 import { Button } from "../../components/Button";
 import { AddUserLabel } from "../../components/AddUserLabel";
 import { PolicyTerms } from "../../components/PolicyTerms";
 import { SearchUser } from "../../components/SearchUser";
 import { useNavigation } from "@react-navigation/native";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Alert } from "react-native";
 import { api } from "../../services/api";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { UserDTO } from "../../dtos/UserDTO";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 
-export function Home(){
+export function NewUser(){
   const [userName, setUserName] = useState('');
   const navigation = useNavigation();
 
-  async function saveUser(newUser: any){
+  function handleGoBack(){
+    navigation.goBack();
+  }
 
+  async function saveUser(newUser: any){
     try {
 
       const newRepo = await api.get(`/users/${userName}/repos`);
@@ -70,34 +75,17 @@ export function Home(){
     }
   }
 
-  useEffect(() => {
-
-    async function loadUsers(){
-      const users = await AsyncStorage.getItem('@githubmobile:users');
-      const currentUsers = users ? JSON.parse(users) : [];
-
-      if (currentUsers.length > 0) {
-        navigation.navigate('users');
-      }
-
-      console.log('quant', currentUsers.length)
-    }
-
-    // async function loadUsers(){
-    //   await AsyncStorage.removeItem('@githubmobile:users');
-    // }
-
-    loadUsers();
-  }, []);
-
   return(
       <Container>
+        <Header>
+          <GoBackButton onPress={handleGoBack}>
+            <AntDesign name="arrowleft" size={32} color="black" />
+          </GoBackButton>
+        </Header>
         <LogoContainer>
           <Logo large/>
         </LogoContainer>
-        <AddUserLabel >
-          Crie sua conta através do seu usuário do GitHub
-        </AddUserLabel>  
+        <AddUserLabel children='Adicione seus novos usuários do Github'/>
         <SearchUser placeholder="@username" onChangeText={setUserName} value={userName}/>
         <Button title="Cadastrar" large onPress={handleRegisterUser} />
         <PolicyTerms />    

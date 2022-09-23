@@ -6,10 +6,11 @@ import { UserDTO } from '../../dtos/UserDTO';
 
 type Props = {
   onPress: () => void;
+  onDelete: () => void;
   data: UserDTO;
 }
 
-export function UserCard({onPress, data}: Props){
+export function UserCard({onPress, data, onDelete}: Props){
   return(
     <GestureHandlerRootView>
       <Container onPress={onPress}>
@@ -22,7 +23,7 @@ export function UserCard({onPress, data}: Props){
             </NameContainer>
             <Username>@{data.login}</Username>
           </UserInfo>
-          <TrashContainer>
+          <TrashContainer onPress={onDelete}>
             <FontAwesome5 name="trash" size={12} color="black" />
           </TrashContainer>
           
@@ -40,7 +41,7 @@ export function UserCard({onPress, data}: Props){
 
           <DetailsContainer>
             <Foundation name="star" size={16} color="#E5E5E5" />
-            <StarName>{data.public_repos}</StarName>
+            <StarName>{data.followers}</StarName>
           </DetailsContainer>
         </OthersInfo>
       </Container>

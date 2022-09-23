@@ -1,5 +1,11 @@
+import { FlatList, FlatListProps } from "react-native";
 import { BorderlessButton, RectButton } from "react-native-gesture-handler";
 import styled from "styled-components/native";
+
+export type TagProp = {
+  id: string;
+  name: string;
+}
 
 export const Container = styled(RectButton)`
   height: 183px;
@@ -68,4 +74,7 @@ export const TimeName = styled.Text`
   color: ${({ theme }) => theme.COLORS.text};
   margin-left: 4px;
   font-family: ${({ theme }) => theme.FONTS.text};
+`
+export const TagList = styled(FlatList as new (props: FlatListProps<TagProp>) => FlatList<TagProp>)`
+  
 `

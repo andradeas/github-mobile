@@ -4,7 +4,10 @@ import { useNavigation } from "@react-navigation/native";
 import { Avatar } from "../Avatar";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 
-export function UserHeader(){
+type Props = {
+  avatarUrl: string;
+}
+export function UserHeader(avatarUrl: Props){
   const navigation = useNavigation();
 
   function handleGoBack(){
@@ -18,7 +21,7 @@ export function UserHeader(){
           <AntDesign name="arrowleft" size={32} color="black" />
         </GoBackButton>
       </GestureHandlerRootView>
-      <Avatar urlImage="https://github.com/andradeas.png" large={false}/>
+      <Avatar urlImage={avatarUrl.avatarUrl} large={false}/>
     </Container>
   )
 }

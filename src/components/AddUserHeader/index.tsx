@@ -7,7 +7,7 @@ export function AddUserHeader() {
   const navigation = useNavigation();
 
   function handleNewUser(){
-    navigation.navigate('home');
+    navigation.navigate('newUser');
   }
 
   return (

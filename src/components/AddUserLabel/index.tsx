@@ -1,10 +1,15 @@
+import { ReactNode } from 'react';
 import {Container, Title, SubTitle} from './styles';
 
-export function AddUserLabel(){
+interface Props {
+  children?: ReactNode;
+}
+
+export function AddUserLabel({children}:Props){
   return(
     <Container>
       <Title>Buscar usuário</Title>
-      <SubTitle>Adicione novos usuários do GitHub</SubTitle>
+      <SubTitle>{children}</SubTitle>
     </Container>
   )
 }

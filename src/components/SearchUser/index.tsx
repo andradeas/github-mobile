@@ -1,11 +1,14 @@
 import { Input, Container} from './styles';
 import { MaterialIcons } from '@expo/vector-icons';
+import { TextInputProps } from 'react-native';
 
-export function SearchUser(){
+type Props = TextInputProps;
+
+export function SearchUser({...rest}: Props){
   return(
     <Container>
       <MaterialIcons name="account-circle" size={24} color="#E5E5E5" />
-      <Input placeholder="@username" />
+      <Input {...rest} autoCapitalize="none"/>
     </Container>
     
   )

@@ -1,103 +1,58 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { RepositoryContainer, RepositoryList, Separator } from "./styles"
 import { UserHeader } from "../../components/UserHeader";
 import { SearchRepository } from "../../components/SearchRepository";
 import { RepositoryCard } from "../../components/RepositoryCard";
 import { Load } from "../../components/Load";
+import { useRoute } from "@react-navigation/native";
+import { UserDTO } from "../../dtos/UserDTO";
+import { Alert } from "react-native";
+import { useAsyncStorage } from "@react-native-async-storage/async-storage";
+import { RepositoryDTO } from "../../dtos/RepositoryDTO";
+
+interface Props {
+  user: UserDTO;
+}
 
 export function User(){
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
+  const dataKey =  '@githubmobile:users';
+  const { getItem } = useAsyncStorage(dataKey);
+  const [data, setData] = useState<RepositoryDTO[]>([]);
+  const route = useRoute();
+  const { user } = route.params as Props;
+  
+  useEffect(() => {
+    async function fetchRepositories(){
+      try {
+      const response = await getItem();
 
-  const repositories = [
-    {
-      id: '1',
-      name: 'project-name-java',
-      description: 'Project application with component app with React Native.',
-      tags: {
-        id: '1',
-        name: 'JavaScript',
-      },
-      technology: 'React Native',
-      stars: '2',
-      people: '5',
-      time: '2 dias atrás',
-    },
-    {
-      id: '2',
-      name: 'project-name-java',
-      description: 'Project application with component app with React Native.',
-      tags: {
-        id: '2',
-        name: 'JavaScript',
-      },
-      technology: 'React Native',
-      stars: '2',
-      people: '5',
-      time: '2 dias atrás',
-    },
-    {
-      id: '3',
-      name: 'project-name-java',
-      description: 'Project application with component app with React Native.',
-      tags: {
-        id: '2',
-        name: 'JavaScript',
-      },
-      technology: 'React Native',
-      stars: '3',
-      people: '5',
-      time: '2 dias atrás',
-    },
-    {
-      id: '4',
-      name: 'project-name-java',
-      description: 'Project application with component app with React Native.',
-      tags: {
-        id: '4',
-        name: 'JavaScript',
-      },
-      technology: 'React Native',
-      stars: '2',
-      people: '5',
-      time: '2 dias atrás',
-    },
-    {
-      id: '5',
-      name: 'project-name-java',
-      description: 'Project application with component app with React Native.',
-      tags: {
-        id: '5',
-        name: 'JavaScript',
-      },
-      technology: 'React Native',
-      stars: '2',
-      people: '5',
-      time: '2 dias atrás',
-    },
-    {
-      id: '6',
-      name: 'project-name-java',
-      description: 'Project application with component app with React Native.',
-      tags: {
-        id: '6',
-        name: 'JavaScript',
-      },
-      technology: 'React Native',
-      stars: '2',
-      people: '5',
-      time: '2 dias atrás',
-    },
-  ]
+      const currentUsers = JSON.parse(response!);
+
+      const userData =  currentUsers.find((item: UserDTO) => item.id === user.id)
+
+      setData(userData.repos_url);
+      
+      setLoading(false);
+        
+      } catch (error) {
+        console.log(error);
+        Alert.alert('Usuário não encontrado') 
+      }
+    }
+
+    fetchRepositories();
+  }, [])
 
   return(
     <>
-      <UserHeader/>
+      <UserHeader avatarUrl={user.avatar_url}/>
       <RepositoryContainer>
         <SearchRepository />
         { loading ? <Load />
           :
           <RepositoryList 
-          data={repositories}
+          data={data}
           keyExtractor={ item => item.id}
           renderItem={({item}) => (<RepositoryCard data={item}/>)}
           ItemSeparatorComponent={Separator}

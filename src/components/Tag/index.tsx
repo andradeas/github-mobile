@@ -1,10 +1,13 @@
 import { Container, TagName } from "./styles";
 
-export function Tag(){
+type Props = {
+  name: string
+}
+export function Tag({name}: Props){
   return(
     <Container>
       <TagName>
-        #JavaScript
+        {name}
       </TagName>
     </Container>
   )

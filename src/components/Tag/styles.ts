@@ -7,6 +7,7 @@ export const Container = styled.View`
   background-color: #00000014;
   justify-content: center;
   align-items: center;
+  margin: 0px 5px;
 `
 export const TagName = styled.Text`
   font-size: 12px;
