@@ -1,4 +1,4 @@
-import { Container, LogoContainer } from "./styles";
+import { Container, SearchContainer, ContentContainer } from "./styles";
 import {Logo} from '../../components/Logo';
 import { Button } from "../../components/Button";
 import { AddUserLabel } from "../../components/AddUserLabel";
@@ -13,10 +13,10 @@ import { UserDTO } from "../../dtos/UserDTO";
 
 export function Home(){
   const [userName, setUserName] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
   const navigation = useNavigation();
 
   async function saveUser(newUser: any){
-
     try {
 
       const newRepo = await api.get(`/users/${userName}/repos`);
@@ -53,6 +53,8 @@ export function Home(){
   }
 
   async function handleRegisterUser(){
+    setIsLoading(!isLoading);
+   
     if (userName.trim() === ''){
       return Alert.alert('Informe um usuário') 
     }
@@ -62,12 +64,14 @@ export function Home(){
       
       await saveUser(response.data);
       
-      setUserName("")
+      setUserName("");      
       
     } catch (error) {
       console.log(error);
       Alert.alert('Usuário não encontrado') 
     }
+
+    setIsLoading(!isLoading);
   }
 
   useEffect(() => {
@@ -92,14 +96,16 @@ export function Home(){
 
   return(
       <Container>
-        <LogoContainer>
+        <ContentContainer>
           <Logo large/>
-        </LogoContainer>
-        <AddUserLabel >
-          Crie sua conta através do seu usuário do GitHub
-        </AddUserLabel>  
-        <SearchUser placeholder="@username" onChangeText={setUserName} value={userName}/>
-        <Button title="Cadastrar" large onPress={handleRegisterUser} />
+          <SearchContainer>
+            <AddUserLabel >
+              Crie sua conta através do seu usuário do GitHub
+            </AddUserLabel>  
+            <SearchUser placeholder="@username" onChangeText={setUserName} value={userName}/>
+            <Button title="Cadastrar" large onPress={handleRegisterUser} color loading={isLoading}/>
+          </SearchContainer>
+          </ContentContainer>
         <PolicyTerms />    
       </Container>
   )

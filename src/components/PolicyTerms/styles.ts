@@ -2,7 +2,6 @@ import styled from "styled-components/native";
 
 export const TextContainer = styled.View`
   flex-direction: row;
-  margin-top: 181px;
 `
 export const TextPrimary = styled.Text`
   font-size: 16px;

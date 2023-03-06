@@ -1,4 +1,4 @@
-import { Container, LogoContainer, Header, GoBackButton } from "./styles";
+import { Container, Header, GoBackButton, ContentContainer, SearchContainer } from "./styles";
 import { AntDesign } from '@expo/vector-icons';
 import {Logo} from '../../components/Logo';
 import { Button } from "../../components/Button";
@@ -15,6 +15,7 @@ import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 export function NewUser(){
   const [userName, setUserName] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
   const navigation = useNavigation();
 
   function handleGoBack(){
@@ -45,6 +46,7 @@ export function NewUser(){
       if (verifyUser.length === 0)
       {
         await AsyncStorage.setItem('@githubmobile:users', JSON.stringify(userDataFormatted));
+        setUserName("");
         navigation.navigate('users');
       }
       else
@@ -58,6 +60,8 @@ export function NewUser(){
   }
 
   async function handleRegisterUser(){
+    setIsLoading(!isLoading);
+
     if (userName.trim() === ''){
       return Alert.alert('Informe um usuário') 
     }
@@ -67,12 +71,12 @@ export function NewUser(){
       
       await saveUser(response.data);
       
-      setUserName("")
-      
     } catch (error) {
       console.log(error);
       Alert.alert('Usuário não encontrado') 
     }
+
+    setIsLoading(!isLoading);
   }
 
   return(
@@ -82,12 +86,14 @@ export function NewUser(){
             <AntDesign name="arrowleft" size={32} color="black" />
           </GoBackButton>
         </Header>
-        <LogoContainer>
+        <ContentContainer>
           <Logo large/>
-        </LogoContainer>
-        <AddUserLabel children='Adicione seus novos usuários do Github'/>
-        <SearchUser placeholder="@username" onChangeText={setUserName} value={userName}/>
-        <Button title="Cadastrar" large onPress={handleRegisterUser} />
+          <SearchContainer>
+            <AddUserLabel children='Adicione seus novos usuários do Github'/>
+            <SearchUser placeholder="@username" onChangeText={setUserName} value={userName}/>
+            <Button title="Cadastrar" large onPress={handleRegisterUser} color loading={isLoading}/>
+          </SearchContainer>
+        </ContentContainer>
         <PolicyTerms />    
       </Container>
   )

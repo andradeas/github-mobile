@@ -9,6 +9,7 @@ import { UserDTO } from "../../dtos/UserDTO";
 import { Alert } from "react-native";
 import { useAsyncStorage } from "@react-native-async-storage/async-storage";
 import { RepositoryDTO } from "../../dtos/RepositoryDTO";
+import { Modal } from "../../components/Modal";
 
 interface Props {
   user: UserDTO;
@@ -21,6 +22,15 @@ export function User(){
   const [data, setData] = useState<RepositoryDTO[]>([]);
   const route = useRoute();
   const { user } = route.params as Props;
+  const [modalVisible, setModalVisible] = useState(false);
+
+  function handleCancelModal(){
+    setModalVisible(false);
+  }
+
+  function handleOpenModal(){
+    setModalVisible(true);
+  }
   
   useEffect(() => {
     async function fetchRepositories(){
@@ -54,13 +64,14 @@ export function User(){
           <RepositoryList 
           data={data}
           keyExtractor={ item => item.id}
-          renderItem={({item}) => (<RepositoryCard data={item}/>)}
+          renderItem={({item}) => (<RepositoryCard data={item} onFilter={handleOpenModal}/>)}
           ItemSeparatorComponent={Separator}
           contentContainerStyle={{paddingBottom: 30}}
           showsVerticalScrollIndicator={false}
           />
         }  
       </RepositoryContainer>
+      <Modal onPress={handleCancelModal} isVisible={modalVisible}/>
     </>
   )
 }

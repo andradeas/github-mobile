@@ -15,6 +15,9 @@ export const Profile = styled.View`
   margin-bottom: 16px;
 `
 export const UserInfo = styled.View`
+  flex: 1;
+  padding-left: 15px;
+  align-items: flex-start;
 `
 export const NameContainer = styled.View`
   flex-direction: row;

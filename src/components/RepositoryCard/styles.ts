@@ -78,3 +78,11 @@ export const TimeName = styled.Text`
 export const TagList = styled(FlatList as new (props: FlatListProps<TagProp>) => FlatList<TagProp>)`
   
 `
+export const EditContainer = styled(BorderlessButton)`
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  background-color: #0017FF;
+  justify-content: center;
+  align-items: center;
+`

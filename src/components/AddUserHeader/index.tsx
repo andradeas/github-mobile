@@ -13,7 +13,7 @@ export function AddUserHeader() {
   return (
     <Container>
       <Logo large={false}/>
-      <Button title="Adicionar novo" large={false} onPress={handleNewUser}/>
+      <Button title="Adicionar novo" large={false} onPress={handleNewUser} color/>
     </Container>
   );
 }

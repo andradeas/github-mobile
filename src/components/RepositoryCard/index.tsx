@@ -1,43 +1,28 @@
-import { Container, TitleContainer, NameContainer, Name, Description, TagsContainer, OtherInfo, DetailsContainer, TechnologyName, StarName, PeopleName, TimeName, StarContainer, TagList } from "./styles";
+import { Container, TitleContainer, NameContainer, Name, Description, TagsContainer, OtherInfo, DetailsContainer, TechnologyName, StarName, PeopleName, TimeName, StarContainer, TagList, EditContainer } from "./styles";
 import { FontAwesome, MaterialIcons  } from '@expo/vector-icons';
 import { Tag } from "../Tag";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { RepositoryDTO } from "../../dtos/RepositoryDTO";
 import { formatDistanceToNow } from 'date-fns'
+import { useState } from "react";
 
 export type Props = {
   data: RepositoryDTO;
+  onFilter: () => void;
 }
 
-export function RepositoryCard({data}: Props){
-  const braLocale = require('date-fns/locale/pt-BR')
+export type TagProps = {
+  id: number;
+  nama: string;
+}
+
+export function RepositoryCard({data, onFilter}: Props){
+  const braLocale = require('date-fns/locale/pt-BR');
+  const [dataTags, setDataTags] = useState<TagProps>();
 
   const date = formatDistanceToNow(
     new Date(data.updated_at), {locale: braLocale}
   )
-
-  const dataTags = [
-    {
-      id: '1',
-      name: 'JavaScript'
-    },
-    {
-      id: '2',
-      name: 'TypeScrip'
-    },
-    {
-      id: '3',
-      name: 'C#'
-    },
-    {
-      id: '4',
-      name: 'Java'
-    },
-    {
-      id: '5',
-      name: 'C++'
-    }
-  ]
 
   return(
     <GestureHandlerRootView>
@@ -64,6 +49,9 @@ export function RepositoryCard({data}: Props){
             showsHorizontalScrollIndicator={false}
             horizontal
             />
+            <EditContainer onPress={onFilter}>
+              <FontAwesome name="pencil" size={14} color="#FFFFFF" />
+            </EditContainer>
         </TagsContainer>
         <OtherInfo>
           <DetailsContainer>
