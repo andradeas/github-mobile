@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Linking } from 'react-native';
 import { RepositoryContainer, RepositoryList, Separator } from "./styles"
 import { UserHeader } from "../../components/UserHeader";
 import { SearchRepository } from "../../components/SearchRepository";
@@ -17,6 +18,7 @@ interface Props {
 
 export function User(){
   const [loading, setLoading] = useState(false);
+  const [search, setSearch] = useState('');
   const dataKey =  '@githubmobile:users';
   const { getItem } = useAsyncStorage(dataKey);
   const [data, setData] = useState<RepositoryDTO[]>([]);
@@ -24,12 +26,18 @@ export function User(){
   const { user } = route.params as Props;
   const [modalVisible, setModalVisible] = useState(false);
 
+  const filteredRepos = search.length > 0 ? data.filter(repo => repo.name.includes(search)) : data;
+
   function handleCancelModal(){
     setModalVisible(false);
   }
 
   function handleOpenModal(){
     setModalVisible(true);
+  }
+
+  const openRepository = (url: string) => {
+    Linking.openURL(url); 
   }
   
   useEffect(() => {
@@ -58,13 +66,13 @@ export function User(){
     <>
       <UserHeader avatarUrl={user.avatar_url}/>
       <RepositoryContainer>
-        <SearchRepository />
+        <SearchRepository onChangeText={setSearch} value={search}/>
         { loading ? <Load />
           :
           <RepositoryList 
-          data={data}
-          keyExtractor={ item => item.id}
-          renderItem={({item}) => (<RepositoryCard data={item} onFilter={handleOpenModal}/>)}
+          data={filteredRepos}
+          keyExtractor={ item => item.id.toString()}
+          renderItem={({item}) => (<RepositoryCard data={item} onFilter={handleOpenModal} onPress={() => openRepository(item.html_url)}/>)}
           ItemSeparatorComponent={Separator}
           contentContainerStyle={{paddingBottom: 30}}
           showsVerticalScrollIndicator={false}

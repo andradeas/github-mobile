@@ -6,7 +6,7 @@ interface Props extends RectButtonProps {
   title: string,
   large: boolean,
   color: boolean,
-  loading: boolean,
+  loading?: boolean,
   onPress: () => void;
 }
 // type Props = TouchableOpacityProps & {

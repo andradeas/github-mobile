@@ -1,6 +1,6 @@
-import { TextInput } from "react-native";
+import { FlatList, FlatListProps, TextInput } from "react-native";
 import styled from "styled-components/native";
-
+import { TagProp } from "../RepositoryCard/styles";
 
 export const Container = styled.View`
   flex: 1;
@@ -36,4 +36,7 @@ export const SuggestContainer = styled.View`
   background: #FFFFFF;
   box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.16);
   border-radius: 4px;
+`
+
+export const SuggestList = styled(FlatList as new (props: FlatListProps<TagProp>) => FlatList<TagProp>)`
 `

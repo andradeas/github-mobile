@@ -17,4 +17,5 @@ export interface RepositoryDTO {
     avatar_url: string;
   };
   updated_at: string;
+  html_url: string;
 }
