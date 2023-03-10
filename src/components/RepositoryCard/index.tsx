@@ -4,7 +4,7 @@ import { Tag } from "../Tag";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { RepositoryDTO } from "../../dtos/RepositoryDTO";
 import { formatDistanceToNow } from 'date-fns'
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export type Props = {
   data: RepositoryDTO;
@@ -14,7 +14,13 @@ export type Props = {
 
 export function RepositoryCard({data, onFilter, onPress}: Props){
   const braLocale = require('date-fns/locale/pt-BR');
-  const [dataTags, setDataTags] = useState<TagProp>();
+  const [dataTags, setDataTags] = useState<TagProp[]>([]);
+
+  useEffect(() => {
+    setDataTags(data.tags);
+    console.log(dataTags);
+  }, []);
+  
 
   const date = formatDistanceToNow(
     new Date(data.updated_at), {locale: braLocale}

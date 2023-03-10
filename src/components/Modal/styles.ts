@@ -20,7 +20,7 @@ export const Title = styled.Text`
   color: ${({ theme }) => theme.COLORS.title};
   font-size: 22px;
   font-family: ${({ theme }) => theme.FONTS.title};
-  `
+`
 
 export const Input = styled(TextInput)`
   flex: 1;
@@ -33,10 +33,22 @@ export const Input = styled(TextInput)`
 export const SuggestContainer = styled.View`
   width: 288px;
   height: 167px;
-  background: #FFFFFF;
+  background-color: #FFFFFF;
   box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.16);
   border-radius: 4px;
 `
 
+export const SelectedList = styled(FlatList as new (prop: FlatListProps<TagProp>) => FlatList<TagProp>)`
+`
+
 export const SuggestList = styled(FlatList as new (props: FlatListProps<TagProp>) => FlatList<TagProp>)`
+`
+
+export const Separator = styled.View`
+  margin-bottom: 8px;
+`
+export const SuggestTitle = styled.Text`
+  color: ${({ theme }) => theme.COLORS.text};
+  font-size: 16px;
+  font-family: ${({ theme }) => theme.FONTS.text};
 `

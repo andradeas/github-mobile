@@ -1,3 +1,4 @@
+import { TagDTO } from "./TagDTO";
 export interface RepositoryDTO {
   id: number;
   name: string;
@@ -5,7 +6,6 @@ export interface RepositoryDTO {
   url: string;
   platform: string;
   users: number;
-  tags: string[];
   starts: number;
   time: string;
   stargazers_count: string;
@@ -18,4 +18,5 @@ export interface RepositoryDTO {
   };
   updated_at: string;
   html_url: string;
+  tags: TagDTO[];
 }

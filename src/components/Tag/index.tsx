@@ -1,14 +1,19 @@
-import { Container, TagName } from "./styles";
+import { Container, TagName, AddContainer } from "./styles";
+import { AntDesign } from '@expo/vector-icons';
 
 type Props = {
-  name: string
+  name: string;
+  onPress: () => void;
 }
-export function Tag({name}: Props){
+export function Tag({name, onPress}: Props){
   return(
     <Container>
       <TagName>
         {name}
       </TagName>
+      <AddContainer onPress={onPress}>
+        <AntDesign name="plus" size={10} color="black" />
+      </AddContainer>
     </Container>
   )
 }

@@ -13,3 +13,18 @@ export const RepositoryList = styled(FlatList as new (props: FlatListProps<Repos
 export const Separator = styled.View`
   margin-bottom: 8px;
 `
+
+export const SearchContainer = styled.View`
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-bottom: 8px;
+`
+
+export const FilterButton = styled.TouchableOpacity`
+  justify-content: center;
+  align-items: center;
+  width: 48px;
+  height: 40px;
+  background-color: ${({ theme }) => theme.COLORS.background};
+`

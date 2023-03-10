@@ -83,8 +83,6 @@ export function Home(){
       if (currentUsers.length > 0) {
         navigation.navigate('users');
       }
-
-      console.log('quant', currentUsers.length)
     }
 
     // async function loadUsers(){

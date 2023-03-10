@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Linking } from 'react-native';
-import { RepositoryContainer, RepositoryList, Separator } from "./styles"
+import { RepositoryContainer, RepositoryList, Separator, SearchContainer, FilterButton } from "./styles"
 import { UserHeader } from "../../components/UserHeader";
 import { SearchRepository } from "../../components/SearchRepository";
 import { RepositoryCard } from "../../components/RepositoryCard";
@@ -11,6 +11,7 @@ import { Alert } from "react-native";
 import { useAsyncStorage } from "@react-native-async-storage/async-storage";
 import { RepositoryDTO } from "../../dtos/RepositoryDTO";
 import { Modal } from "../../components/Modal";
+import { Ionicons } from '@expo/vector-icons'; 
 
 interface Props {
   user: UserDTO;
@@ -66,16 +67,21 @@ export function User(){
     <>
       <UserHeader avatarUrl={user.avatar_url}/>
       <RepositoryContainer>
-        <SearchRepository onChangeText={setSearch} value={search}/>
+        <SearchContainer>
+          <SearchRepository onChangeText={setSearch} value={search}/>
+          <FilterButton>
+            <Ionicons name="filter-outline" size={24} color="#7E7E7E" />
+          </FilterButton>
+        </SearchContainer>
         { loading ? <Load />
           :
           <RepositoryList 
-          data={filteredRepos}
-          keyExtractor={ item => item.id.toString()}
-          renderItem={({item}) => (<RepositoryCard data={item} onFilter={handleOpenModal} onPress={() => openRepository(item.html_url)}/>)}
-          ItemSeparatorComponent={Separator}
-          contentContainerStyle={{paddingBottom: 30}}
-          showsVerticalScrollIndicator={false}
+            data={filteredRepos}
+            keyExtractor={ item => item.id.toString()}
+            renderItem={({item}) => (<RepositoryCard data={item} onFilter={handleOpenModal} onPress={() => openRepository(item.html_url)}/>)}
+            ItemSeparatorComponent={Separator}
+            contentContainerStyle={{paddingBottom: 30}}
+            showsVerticalScrollIndicator={false}
           />
         }  
       </RepositoryContainer>
