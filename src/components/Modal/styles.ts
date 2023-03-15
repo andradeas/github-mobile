@@ -12,22 +12,14 @@ export const Body = styled.View`
   justify-content: space-around;
   background-color: #FFFFFF;
   border-radius: 8px;
-  padding: 25px;
-  min-height: 415px;
+  padding: 25px 30px;
+  min-height: 450px;
 `;
 
 export const Title = styled.Text`
   color: ${({ theme }) => theme.COLORS.title};
   font-size: 22px;
   font-family: ${({ theme }) => theme.FONTS.title};
-`
-
-export const Input = styled(TextInput)`
-  flex: 1;
-  height: 40px;
-  font-size: 16px;
-  color: ${({ theme }) => theme.COLORS.text};
-  padding-left: 10px;
 `
 
 export const SuggestContainer = styled.View`

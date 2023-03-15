@@ -24,3 +24,12 @@ export const AddContainer = styled(BorderlessButton)`
   justify-content: center;
   align-items: center;
 `
+
+export const RemoveContainer = styled(BorderlessButton)`
+  width: 16px;
+  height: 16px;
+  border-radius: 8px;
+  background-color: black;
+  justify-content: center;
+  align-items: center;
+`

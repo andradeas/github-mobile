@@ -18,7 +18,6 @@ export function RepositoryCard({data, onFilter, onPress}: Props){
 
   useEffect(() => {
     setDataTags(data.tags);
-    console.log(dataTags);
   }, []);
   
 

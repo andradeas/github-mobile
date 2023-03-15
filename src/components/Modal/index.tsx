@@ -8,11 +8,12 @@ import { useEffect, useState } from 'react';
 import { TagDTO } from '../../dtos/TagDTO';
 
 type Props = {
-  onPress: () => void;
+  onSave: () => void;
+  onCancel: () => void;
   isVisible: boolean;
 }
 
-export function Modal({onPress, isVisible}: Props){
+export function Modal({onSave, onCancel, isVisible}: Props){
   const [tag, setTag] = useState<TagDTO[]>([])
   const [selectedTag, setSelectedTag] = useState<TagDTO[]>([])
 
@@ -20,10 +21,16 @@ export function Modal({onPress, isVisible}: Props){
     setTag(tags);
   }, []);
 
-  const RemoveTag = (id: string) => {
+  const AddTag = (id: string) => {
     const eliminated = tag.find(item => item.id === id)
     setTag(tag.filter(item => item.id !== id))
     setSelectedTag((state) => ([...state, eliminated]));
+  }
+
+  function RemoveTag(id: string){
+    const eliminated = selectedTag.find(item => item.id === id)
+    setSelectedTag(selectedTag.filter(item => item.id !== id))
+    return setTag((state) => ([...state, eliminated]));
   }
 
   return(
@@ -32,17 +39,22 @@ export function Modal({onPress, isVisible}: Props){
         <Body>
           <Title>Adicionar tags</Title>
           <SearchRepository />
-          <SelectedList 
-            data={selectedTag}
-            keyExtractor={item => item.id}
-            renderItem={({item}) => (<Tag name={item.name}/>)}
-            horizontal
-          />
+          {selectedTag.length > 0  && (
+            <SelectedList 
+              data={selectedTag}
+              keyExtractor={item => item.id}
+              renderItem={({item}) => (<Tag name={item.name} onPress={() => RemoveTag(item.id)}/>)}
+              horizontal
+              showsHorizontalScrollIndicator={false}
+              style={{flexGrow: 0}}
+            />
+            )
+          }
           <SuggestContainer>
             <SuggestList 
               data={tag}
               keyExtractor={item => item.id}
-              renderItem={({item}) => (<Tag name={item.name} onPress={() => RemoveTag(item.id)}/>)}
+              renderItem={({item}) => (<Tag name={item.name} onPress={() => AddTag(item.id)} action/>)}
               numColumns={3}
               ItemSeparatorComponent={Separator}
               ListHeaderComponent={<SuggestTitle >Sugestões</SuggestTitle>}
@@ -50,8 +62,8 @@ export function Modal({onPress, isVisible}: Props){
               style={{margin: 10}}
               />
           </SuggestContainer>
-          <Button large title='Salvar' onPress={onPress} color/>
-          <Button large title='Cancelar' onPress={onPress} color={false}/>
+          <Button large title='Salvar' onPress={onSave} color/>
+          <Button large title='Cancelar' onPress={onCancel} color={false}/>
         </Body>
       </Container>
     </ModalComponent>

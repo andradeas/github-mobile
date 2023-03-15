@@ -85,7 +85,7 @@ export function User(){
           />
         }  
       </RepositoryContainer>
-      <Modal onPress={handleCancelModal} isVisible={modalVisible}/>
+      <Modal onCancel={handleCancelModal} isVisible={modalVisible}/>
     </>
   )
 }
