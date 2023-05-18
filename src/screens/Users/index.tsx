@@ -11,7 +11,7 @@ interface NavigationProps{
   navigate:(
     screen: string,
     userObject?:{
-      user: UserDTO
+      id: TagDTO["id"];
     }
   ) => void
 }
@@ -26,7 +26,8 @@ export function Users(){
   
 
   function handleUser(user: UserDTO){
-    navigation.navigate('user', {user});
+    const { id } = user;
+    navigation.navigate('user', {id});
   }
 
   async function handleDelete(id: string) {

@@ -9,7 +9,6 @@ import { useEffect, useState } from "react";
 import { Alert } from "react-native";
 import { api } from "../../services/api";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { UserDTO } from "../../dtos/UserDTO";
 
 export function Home(){
   const [userName, setUserName] = useState('');

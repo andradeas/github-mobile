@@ -1,4 +1,4 @@
-export interface TagDTO {
-  id: string;
+declare interface TagDTO {
+  id: string | number;
   name: string;
 }

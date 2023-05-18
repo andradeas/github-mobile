@@ -1,6 +1,6 @@
 import { FlatList, FlatListProps, TextInput } from "react-native";
 import styled from "styled-components/native";
-import { TagProp } from "../RepositoryCard/styles";
+import { TagDTO } from "../../dtos/TagDTO";
 
 export const Container = styled.View`
   flex: 1;
@@ -30,10 +30,10 @@ export const SuggestContainer = styled.View`
   border-radius: 4px;
 `
 
-export const SelectedList = styled(FlatList as new (prop: FlatListProps<TagProp>) => FlatList<TagProp>)`
+export const SelectedList = styled(FlatList as new (prop: FlatListProps<TagDTO>) => FlatList<TagDTO>)`
 `
 
-export const SuggestList = styled(FlatList as new (props: FlatListProps<TagProp>) => FlatList<TagProp>)`
+export const SuggestList = styled(FlatList as new (props: FlatListProps<TagDTO>) => FlatList<TagDTO>)`
 `
 
 export const Separator = styled.View`

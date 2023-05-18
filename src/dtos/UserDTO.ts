@@ -1,6 +1,4 @@
-import { RepositoryDTO } from "./RepositoryDTO";
-
-export interface UserDTO {
+declare interface UserDTO {
   login: string;
   id: number;
   name: string;

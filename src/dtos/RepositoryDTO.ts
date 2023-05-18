@@ -1,5 +1,4 @@
-import { TagDTO } from "./TagDTO";
-export interface RepositoryDTO {
+declare interface RepositoryDTO {
   id: number;
   name: string;
   description: string;

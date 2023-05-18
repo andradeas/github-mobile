@@ -4,33 +4,37 @@ import { Container, Body, Title, SuggestContainer, SuggestList, Separator, Sugge
 import tags from '../../assets/tags';
 import { Tag } from '../Tag';
 import { SearchRepository } from '../SearchRepository';
-import { useEffect, useState } from 'react';
-import { TagDTO } from '../../dtos/TagDTO';
+import { useState } from 'react';
 
 type Props = {
   onSave: () => void;
   onCancel: () => void;
   isVisible: boolean;
+  tags: TagDTO[];
+  onChangeTag: (tags: TagDTO[]) => void;
 }
 
-export function Modal({onSave, onCancel, isVisible}: Props){
-  const [tag, setTag] = useState<TagDTO[]>([])
-  const [selectedTag, setSelectedTag] = useState<TagDTO[]>([])
+export function Modal({onSave, onCancel, isVisible, tags: selectedTags, onChangeTag: setSelectedTags}: Props){
+  const [tag, setTag] = useState<TagDTO[]>(tags);
 
-  useEffect(() => {
-    setTag(tags);
-  }, []);
-
-  const AddTag = (id: string) => {
+  const AddTag = (id: TagDTO["id"]) => {
     const eliminated = tag.find(item => item.id === id)
     setTag(tag.filter(item => item.id !== id))
-    setSelectedTag((state) => ([...state, eliminated]));
+    
+    if(!selectedTags) return
+    if(!eliminated) return
+
+    setSelectedTags([...selectedTags, eliminated]);
   }
 
-  function RemoveTag(id: string){
-    const eliminated = selectedTag.find(item => item.id === id)
-    setSelectedTag(selectedTag.filter(item => item.id !== id))
-    return setTag((state) => ([...state, eliminated]));
+  function RemoveTag(id: TagDTO["id"]){
+    const eliminated = selectedTags.find(item => item.id === id)
+    setSelectedTags(selectedTags.filter(item => item.id !== id))
+
+    if(!selectedTags) return
+    if(!eliminated) return
+
+    setTag((state) => ([...state, eliminated]));
   }
 
   return(
@@ -39,10 +43,10 @@ export function Modal({onSave, onCancel, isVisible}: Props){
         <Body>
           <Title>Adicionar tags</Title>
           <SearchRepository />
-          {selectedTag.length > 0  && (
+          {selectedTags.length > 0  && (
             <SelectedList 
-              data={selectedTag}
-              keyExtractor={item => item.id}
+              data={selectedTags}
+              keyExtractor={item => item.id.toString()}
               renderItem={({item}) => (<Tag name={item.name} onPress={() => RemoveTag(item.id)}/>)}
               horizontal
               showsHorizontalScrollIndicator={false}
@@ -53,7 +57,7 @@ export function Modal({onSave, onCancel, isVisible}: Props){
           <SuggestContainer>
             <SuggestList 
               data={tag}
-              keyExtractor={item => item.id}
+              keyExtractor={item => item.id.toString()}
               renderItem={({item}) => (<Tag name={item.name} onPress={() => AddTag(item.id)} action/>)}
               numColumns={3}
               ItemSeparatorComponent={Separator}
